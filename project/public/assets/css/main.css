@@ -2292,13 +2292,25 @@ button,
     font-size: 1.7rem;
   }
 
+  .logout {
+    color: #3d4449;
+    font-size: 1.7rem;
+  }
+
   #sidebar > .inner > .login {
     display: inline-block;
-    border-bottom: none;
     border-bottom: solid 3px #0F1E96;
-    margin: 0 0 1.5em 0;
+    margin: 0 2em 1.5em 0;
     padding: 0 0.75em 0 0;
   }
+
+  #sidebar > .inner > .logout {
+    display: inline-block;
+    border-bottom: none;
+    margin: 0 0em 1.5em 0;
+    padding: 0 0.75em 0 0;
+  }
+
 
 
   .articleContent {

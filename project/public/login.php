@@ -7,7 +7,7 @@
 	    $email = $_POST["email"];
 	    $password = $_POST["password"];
 
-	    $stmt = $pdo->prepare("SELECT id, password, nom, prenom  FROM users WHERE email = ?");
+	    $stmt = $pdo->prepare("SELECT id, password, nom, prenom, role FROM users WHERE email = ?");
 	    $stmt->execute([$email]);
 	    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -17,6 +17,7 @@
        		 	$_SESSION["nom"]     = $user["nom"];
         		$_SESSION["prenom"]  = $user["prenom"];
         		$_SESSION["email"]  = $email;
+        		$_SESSION["role"]  = $user["role"];
 	            header("Location: index.php");
 	            exit;
 	        } else {
@@ -50,7 +51,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>ENSA KHOURIBGA</strong> – École Nationale des Sciences Appliquées</a>
+									<a href="index.php" class="logo"><strong>ENSA KHOURIBGA</strong> – École Nationale des Sciences Appliquées</a>
 									<ul class="icons">
 										<li><a href="#" target="_blank" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>

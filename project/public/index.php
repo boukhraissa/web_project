@@ -1,6 +1,7 @@
 <?php
 	session_start();
 	$isLoggedIn = isset($_SESSION["user_id"]);
+	$isAdmin = isset($_SESSION["role"]) && $_SESSION["role"] === "admin";
 ?>
 
 <!DOCTYPE HTML>
@@ -22,7 +23,7 @@
 
 							<!-- Header -->
 								<header id="header">
-									<a href="index.html" class="logo"><strong>ENSA KHOURIBGA</strong> – École Nationale des Sciences Appliquées</a>
+									<a href="index.php" class="logo"><strong>ENSA KHOURIBGA</strong> – École Nationale des Sciences Appliquées</a>
 									<ul class="icons">
 										<li><a href="#" target="_blank" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -151,9 +152,10 @@
 						<div class="inner">
 							<!-- Login -->
 							<?php if (!$isLoggedIn): ?>
-						        <a href="login.php" id="log" class="icon solid fa-user-circle login"> se connecter</a>
+						        <a href="login.php" class="icon solid fa-user-circle login"> se connecter</a>
 						    <?php else: ?>
-						    	<a href="login.php" id="log" class="icon solid fa-user-circle login"><?php echo " " . $_SESSION["nom"] . " " . $_SESSION["prenom"]; ?></a>
+						    	<a href="login.php" class="icon solid fa-user-circle login"><?php echo " " . $_SESSION["nom"] . " " . $_SESSION["prenom"]; ?></a>
+						    	<a href="logout.php" class="icon solid fa-sign-out-alt logout"></a>
 						    <?php endif; ?>
 								
 							<!-- Menu -->
@@ -162,7 +164,7 @@
 										<h2>Menu</h2>
 									</header>
 									<ul>
-										<li><a href="index.html">Accueill</a></li>
+										<li><a href="index.php">Accueill</a></li>
 										<li>
 											<span class="opener">Espace Etudiant</span>
 											<ul>
@@ -173,7 +175,9 @@
 										</li>
 										<li><a href="#">Formation</a></li>
 										<li><a href="#">Evenement</a></li>
-										<li><a href="#">Espace d'Adminitration</a></li>
+										<?php if ($isAdmin): ?>
+						        			<li><a href="#">Espace d'Adminitration</a></li>
+						    			<?php endif; ?>
 									</ul>
 								</nav>
 
