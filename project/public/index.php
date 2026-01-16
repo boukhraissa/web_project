@@ -1,3 +1,8 @@
+<?php
+	session_start();
+	$isLoggedIn = isset($_SESSION["user_id"]);
+?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -145,7 +150,12 @@
 					<div id="sidebar">
 						<div class="inner">
 							<!-- Login -->
-								<a href="#" id="log" class="icon solid fa-user-circle login"> se connecter</a>
+							<?php if (!$isLoggedIn): ?>
+						        <a href="login.php" id="log" class="icon solid fa-user-circle login"> se connecter</a>
+						    <?php else: ?>
+						    	<a href="login.php" id="log" class="icon solid fa-user-circle login"><?php echo " " . $_SESSION["nom"] . " " . $_SESSION["prenom"]; ?></a>
+						    <?php endif; ?>
+								
 							<!-- Menu -->
 								<nav id="menu">
 									<header class="major">
