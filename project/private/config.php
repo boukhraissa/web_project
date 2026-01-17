@@ -2,7 +2,7 @@
 $host = '127.0.0.1';
 $db   = 'ensa_db';
 $user = 'root';
-$pass = '';
+$pass = 'anouar123';
 $port = 3307;
 
 try {
