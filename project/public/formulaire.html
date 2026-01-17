@@ -13,18 +13,18 @@
 			
 			body {
 				font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-				background: linear-gradient(135deg, #050e36 0%, #0d0614 100%);
+				background:  linear-gradient(135deg, #050e36 0%, #0d0614 100%);
 				min-height: 100vh;
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				padding: 20px;
+				padding:  20px;
 			}
 			
 			.container {
 				background: white;
 				border-radius: 20px;
-				box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+				box-shadow:  0 20px 60px rgba(0, 0, 0, 0.3);
 				max-width: 700px;
 				width: 100%;
 				padding: 40px;
@@ -41,13 +41,13 @@
 				margin-bottom: 10px;
 			}
 			
-			.header p {
+			.header h4 {
 				color: #666;
 				font-size: 1.1em;
 			}
 			
 			.form-group {
-				margin-bottom: 25px;
+				margin-bottom:  25px;
 			}
 			
 			.form-group label {
@@ -66,7 +66,7 @@
 				border-radius: 8px;
 				font-size: 1em;
 				transition: all 0.3s ease;
-				background: #f8f9fa;
+				background:  #f8f9fa;
 			}
 			
 			.form-group input:focus,
@@ -85,21 +85,27 @@
 			
 			.btn-submit {
 				width: 100%;
-				padding: 15px;
+				padding:  15px;
 				background: linear-gradient(135deg, #1c254e 0%, #625c69 100%);
 				color: white;
 				border: none;
 				border-radius: 8px;
-				font-size: 1.1em;
+				font-size:  1.1em;
 				font-weight: 600;
 				cursor: pointer;
-				transition: all 0.3s ease;
+				transition:  all 0.3s ease;
 				margin-top: 20px;
 			}
 			
 			.btn-submit:hover {
 				transform: translateY(-2px);
 				box-shadow: 0 10px 25px rgba(73, 87, 146, 0.4);
+			}
+			
+			.btn-submit:disabled {
+				opacity: 0.6;
+				cursor: not-allowed;
+				transform: none;
 			}
 			
 			.btn-retour {
@@ -113,6 +119,25 @@
 			
 			.btn-retour:hover {
 				color: #764ba2;
+			}
+			
+			.message {
+				padding: 15px;
+				border-radius: 8px;
+				margin-bottom: 20px;
+				display: none;
+			}
+			
+			.message.success {
+				background-color: #d4edda;
+				border: 1px solid #c3e6cb;
+				color:  #155724;
+			}
+			
+			.message.error {
+				background-color: #f8d7da;
+				border: 1px solid #f5c6cb;
+				color:  #721c24;
 			}
 			
 			@media (max-width: 600px) {
@@ -133,9 +158,11 @@
 	<body>
 		<div class="container">
 			<div class="header">
-				<h1> Formulaire de Postulation</h1>
+				<h1>Formulaire de Postulation</h1>
 				<h4>ENSA KHOURIBGA - Master en Informatique et Mathématiques</h4>
 			</div>
+			
+			<div id="message" class="message"></div>
 			
 			<form id="formulaire" onsubmit="soumettreFormulaire(event)">
 				<div class="form-row">
@@ -197,7 +224,7 @@
 					</select>
 				</div>
 				
-				<button type="submit" class="btn-submit">✉️ SOUMETTRE LA CANDIDATURE</button>
+				<button type="submit" class="btn-submit" id="submitBtn">✉️ SOUMETTRE LA CANDIDATURE</button>
 				
 				<div style="text-align: center;">
 					<a href="Formation.html" class="btn-retour">← Retour à la page Formation</a>
@@ -206,30 +233,54 @@
 		</div>
 		
 		<script>
+			function afficherMessage(message, type) {
+				const messageDiv = document.getElementById('message');
+				messageDiv.textContent = message;
+				messageDiv.className = 'message ' + type;
+				messageDiv.style.display = 'block';
+				
+				// Faire défiler vers le haut pour voir le message
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+				
+				// Masquer le message après 5 secondes
+				setTimeout(() => {
+					messageDiv.style. display = 'none';
+				}, 5000);
+			}
+			
 			function soumettreFormulaire(event) {
 				event.preventDefault();
 				
-				// Récupérer les données du formulaire
-				const formData = {
-					nom: document.getElementById('nom').value,
-					prenom: document.getElementById('prenom').value,
-					telephone: document.getElementById('telephone').value,
-					date_naissance: document.getElementById('date_naissance').value,
-					email: document.getElementById('email').value,
-					ville: document.getElementById('ville').value,
-					adresse: document.getElementById('adresse').value,
-					code_postal: document.getElementById('code_postal').value,
-					diplome: document.getElementById('diplome').value
-				};
+				const submitBtn = document.getElementById('submitBtn');
+				submitBtn.disabled = true;
+				submitBtn.textContent = '⏳ Envoi en cours...';
 				
-				// Afficher un message de confirmation
-				alert('Merci ' + formData.prenom + ' ' + formData.nom + ' !\n\nVotre candidature a été soumise avec succès.\nNous vous contacterons bientôt à l\'adresse : ' + formData.email);
+				// Créer un objet FormData avec les données du formulaire
+				const formData = new FormData(document.getElementById('formulaire'));
 				
-				// Réinitialiser le formulaire
-				document.getElementById('formulaire').reset();
-				
-				// Vous pouvez ici envoyer les données à un serveur
-				console.log('Données du formulaire:', formData);
+				// Envoyer les données au serveur
+				fetch('traiter_postulation.php', {
+					method: 'POST',
+					body: formData
+				})
+				.then(response => response.json())
+				.then(data => {
+					if (data.success) {
+						afficherMessage(data.message, 'success');
+						// Réinitialiser le formulaire
+						document.getElementById('formulaire').reset();
+					} else {
+						afficherMessage(data.message, 'error');
+					}
+				})
+				.catch(error => {
+                    console.error('Erreur complète:', error);
+                    afficherMessage('Erreur:  ' + error. message + ' - Vérifiez la console du navigateur', 'error');
+                })
+				.finally(() => {
+					submitBtn.disabled = false;
+					submitBtn.textContent = '✉️ SOUMETTRE LA CANDIDATURE';
+				});
 			}
 		</script>
 	</body>
