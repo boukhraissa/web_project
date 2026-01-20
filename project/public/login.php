@@ -68,8 +68,8 @@
 										<input type="email" name="email" required placeholder="student@ensa.ma">
 	    								<input type="password" name="password" required placeholder="password">
 	    								<div>
-	    									<button onclick="window.location.href='register.php'">Register</button>
-	    									<button type="submit" class="submit">Login</button>
+	    									<button id="bt1" onclick="window.location.href='register.php'">Register</button>
+	    									<button id="bt2" type="submit" class="submit">Login</button>
 	    								</div>
 
 	    								<?php if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($error)): ?>

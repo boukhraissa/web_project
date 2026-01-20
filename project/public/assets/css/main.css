@@ -2357,6 +2357,25 @@ button,
     box-shadow: 0 0 5px #0F1E96;
   } 
 
+  .div_form form select {
+    color: #0F1E96;
+    border-color: #0F1E96;
+    border-width: 2px;
+  }
+
+  .div_form form select:focus {
+    color: #000;
+    border-color: #0F1E96; 
+    background-color: #D6D6D6; 
+    box-shadow: 0 0 5px #0F1E96; 
+  }
+
+  .div_form form select:hover {
+    border-color: #0F1E96; 
+    background-color: #D6D6D6;
+    box-shadow: 0 0 5px #0F1E96;
+  } 
+
   .div_form form div {
     align-self: flex-end;
     display: flex;

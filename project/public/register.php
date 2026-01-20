@@ -6,6 +6,7 @@
 	    $email  = $_POST["email"];
 	    $nom    = $_POST["nom"];
 	    $prenom = $_POST["prenom"];
+	    $filiere= $_POST["filiere"];
 
 	    if ($_POST["password"] !== $_POST["check_password"]) {
 	        	$error = "Passwords do not match";
@@ -15,9 +16,9 @@
 
 	        try {
 	            $stmt = $pdo->prepare(
-	                "INSERT INTO users (email, nom, prenom, password) VALUES (?, ?, ?, ?)"
+	                "INSERT INTO users (email, nom, prenom, password, filiere) VALUES (?, ?, ?, ?, ?)"
 	            );
-	            $stmt->execute([$email, $nom, $prenom, $password]);
+	            $stmt->execute([$email, $nom, $prenom, $password, $filiere]);
 	            header("Location: logout.php");
 	        } catch (PDOException $e) {
 	            if ($e->getCode() == 23000) {
@@ -70,6 +71,33 @@
 										<input type="text" name="prenom" required placeholder="prenom">
 	    								<input type="password" name="password" required placeholder="password">
 	    								<input type="password" name="check_password" required placeholder="Retype password">
+								 	    <select name="filiere" required>
+								 	    	<option	value="" disabled selected>Filiere</option>
+
+									     	<option value="GE1">GE1</option>
+											<option value="GE2">GE2</option>
+											<option value="GE3">GE3</option>
+
+											<option value="GI1">GI1</option>
+											<option value="GI2">GI2</option>
+											<option value="GI3">GI3</option>
+
+											<option value="GPEE1">GPEE1</option>
+											<option value="GPEE2">GPEE2</option>
+											<option value="GPEE3">GPEE3</option>
+
+											<option value="IID1">IID1</option>
+											<option value="IID2">IID2</option>
+											<option value="IID3">IID3</option>
+
+											<option value="IRIC1">IRIC1</option>
+											<option value="IRIC2">IRIC2</option>
+											<option value="IRIC3">IRIC3</option>
+
+											<option value="MGSI1">MGSI1</option>
+											<option value="MGSI2">MGSI2</option>
+											<option value="MGSI3">MGSI3</option>
+									    </select>
 	    								<button type="submit" class="submit">Register</button>
 	    	
 
