@@ -7,7 +7,7 @@
 	    $email = $_POST["email"];
 	    $password = $_POST["password"];
 
-	    $stmt = $pdo->prepare("SELECT id, password, nom, prenom, role FROM users WHERE email = ?");
+	    $stmt = $pdo->prepare("SELECT id, password, nom, prenom, filiere, role FROM users WHERE email = ?");
 	    $stmt->execute([$email]);
 	    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -16,8 +16,9 @@
 	            $_SESSION["user_id"] = $user["id"];
        		 	$_SESSION["nom"]     = $user["nom"];
         		$_SESSION["prenom"]  = $user["prenom"];
-        		$_SESSION["email"]  = $email;
+        		$_SESSION["filiere"]  = $user["filiere"];
         		$_SESSION["role"]  = $user["role"];
+        		$_SESSION["email"]  = $email;
 	            header("Location: index.php");
 	            exit;
 	        } else {

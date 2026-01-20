@@ -42,7 +42,7 @@
 										</header>
 										<p>L’ENSA Khouribga (École Nationale des Sciences Appliquées de Khouribga) est un établissement public d’enseignement supérieur au Maroc, faisant partie du réseau national des ENSA. Elle a pour mission de former des ingénieurs hautement qualifiés, capables de répondre aux exigences du développement technologique et industriel.</p>
 										<ul class="actions">
-											<li><a href="#" class="button big">En Savoir Plus</a></li>
+											<li><a href="Formation.php" class="button big">En Savoir Plus</a></li>
 										</ul>
 									</div>
 									<span class="image object">
@@ -94,51 +94,51 @@
 									</header>
 									<div class="posts">
 										<article>
-											<a href="#" class="image"><img src="images/IRIC.jpg" alt="" /></a>
+											<a href="Formation.php" class="image"><img src="images/IRIC.jpg" alt="" /></a>
 											<h3 class="branchTitle">Ingénierie des Réseaux Intelligents et Cybersécurité</h3>
 											<p class="branchContent">Cette filière vise à former des ingénieurs capables de concevoir et sécuriser des infrastructures réseau complexes. Elle combine les technologies des réseaux intelligents, des systèmes connectés et de la cybersécurité.</p>
 											<ul class="actions">
-												<li><a href="#" class="button branchButton">Plus</a></li>
+												<li><a href="Formation.php" class="button branchButton">Plus</a></li>
 											</ul>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/GE.jpg" alt="" /></a>
+											<a href="Formation.php" class="image"><img src="images/GE.jpg" alt="" /></a>
 											<h3 class="branchTitle">Génie Électrique</h3>
 											<p class="branchContent">Cette filière forme des ingénieurs maîtrisant la production, la distribution et la gestion de l’énergie électrique. Elle couvre les systèmes électriques, l’électronique de puissance, l’automatisation et les réseaux énergétiques modernes.</p>
 											<ul class="actions">
-												<li><a href="#" class="button branchButton">Plus</a></li>
+												<li><a href="Formation.php" class="button branchButton">Plus</a></li>
 											</ul>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/GP.jpg" alt="" /></a>
+											<a href="Formation.php" class="image"><img src="images/GP.jpg" alt="" /></a>
 											<h3 class="branchTitle">Génie des Procédés, de l’Énergie et de l’Environnement</h3>
 											<p class="branchContent">Cette filière forme des ingénieurs spécialisés dans l’optimisation des procédés industriels en intégrant les enjeux énergétiques et environnementaux. Elle met l’accent sur l’efficacité énergétique, la gestion des ressources et le développement durable.</p>
 											<ul class="actions">
-												<li><a href="#" class="button branchButton">Plus</a></li>
+												<li><a href="Formation.php" class="button branchButton">Plus</a></li>
 											</ul>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/GI.jpg" alt="" /></a>
+											<a href="Formation.php" class="image"><img src="images/GI.jpg" alt="" /></a>
 											<h3 class="branchTitle">Génie Informatique</h3>
 											<p class="branchContent">Cette filière forme des ingénieurs capables de concevoir, développer et maintenir des systèmes informatiques performants. Elle couvre le développement logiciel, les systèmes d’exploitation, les bases de données et l’architecture des systèmes informatiques.</p>
 											<ul class="actions">
-												<li><a href="#" class="button branchButton">Plus</a></li>
+												<li><a href="Formation.php" class="button branchButton">Plus</a></li>
 											</ul>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/Data.jpg" alt="" /></a>
+											<a href="Formation.php" class="image"><img src="images/Data.jpg" alt="" /></a>
 											<h3 class="branchTitle">Informatique et Ingénierie des Données</h3>
 											<p class="branchContent">Cette filière prépare des ingénieurs spécialisés dans la collecte, le traitement et l’analyse des données. Elle intègre les bases de la data science, du big data et des systèmes intelligents pour répondre aux enjeux numériques des organisations.</p>
 											<ul class="actions">
-												<li><a href="#" class="button branchButton">Plus</a></li>
+												<li><a href="Formation.php" class="button branchButton">Plus</a></li>
 											</ul>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/MGSI.jpg" alt="" /></a>
+											<a href="Formation.php" class="image"><img src="images/MGSI.jpg" alt="" /></a>
 											<h3 class="branchTitle">Management et Gouvernance des Systèmes d’Information</h3>
 											<p class="branchContent">Cette filière prépare des ingénieurs capables de piloter les systèmes d’information et d’aligner les technologies numériques avec la stratégie des organisations. Elle combine compétences techniques, management, gouvernance et transformation digitale.</p>
 											<ul class="actions">
-												<li><a href="#" class="button branchButton">Plus</a></li>
+												<li><a href="Formation.php" class="button branchButton">Plus</a></li>
 											</ul>
 										</article>
 									</div>
@@ -168,13 +168,14 @@
 										<li>
 											<span class="opener">Espace Etudiant</span>
 											<ul>
-												<li><a href="#">Clubs</a></li>
-												<li><a href="#">Emplois du temps</a></li>
-												<li><a href="#">Notes</a></li>
+												<li><a href="infoPersonelle.php">Info Personelles</a></li>
+                                                <li><a href="calendar.php">Emplois Du Temps</a></li>
+												<li><a href="clubs.php">Clubs</a></li>
+												<li><a href="note.php">Notes</a></li>
 											</ul>
 										</li>
-										<li><a href="#">Formation</a></li>
-										<li><a href="#">Evenement</a></li>
+										<li><a href="Formation.php">Formation</a></li>
+										<li><a href="evenement.php">Evenement</a></li>
 										<?php if ($isAdmin): ?>
 						        			<li><a href="#">Espace d'Adminitration</a></li>
 						    			<?php endif; ?>

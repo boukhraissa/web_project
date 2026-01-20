@@ -2,11 +2,10 @@
 	require "./../private/config.php";
 
 	$error = "";
-
 	if ($_SERVER["REQUEST_METHOD"] === "POST") {
-	    $email  = $_POST["email"] ?? "";
-	    $nom    = $_POST["nom"] ?? "";
-	    $prenom = $_POST["prenom"] ?? "";
+	    $email  = $_POST["email"];
+	    $nom    = $_POST["nom"];
+	    $prenom = $_POST["prenom"];
 
 	    if ($_POST["password"] !== $_POST["check_password"]) {
 	        	$error = "Passwords do not match";
@@ -19,9 +18,7 @@
 	                "INSERT INTO users (email, nom, prenom, password) VALUES (?, ?, ?, ?)"
 	            );
 	            $stmt->execute([$email, $nom, $prenom, $password]);
-	            header("Location: index.php");
-
-	            $email = $nom = $prenom = "";
+	            header("Location: logout.php");
 	        } catch (PDOException $e) {
 	            if ($e->getCode() == 23000) {
 	                $error = "Email already exists. Please use a different email.";
